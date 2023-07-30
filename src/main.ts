@@ -1,9 +1,11 @@
 // core
 import { createApp } from "vue"
-import App from "@/App.vue"
+import App from "./App.vue"
 import store from "@/store"
 import router from "@/router"
 import "@/router/permission"
+import "echarts"
+import ECharts from "vue-echarts"
 // load
 import { loadSvg } from "@/icons"
 import { loadPlugins } from "@/plugins"
@@ -26,7 +28,7 @@ loadSvg(app)
 /** 加载自定义指令 */
 loadDirectives(app)
 
-app.use(store).use(router)
+app.use(store).use(router).component("v-chart", ECharts)
 router.isReady().then(() => {
   app.mount("#app")
 })
